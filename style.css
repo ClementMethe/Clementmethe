@@ -96,7 +96,7 @@ model-viewer {
 .Hotspotcontainer {
   display: flex;
   font-family: sligoilmicro;
-  font-size: 20px;
+  font-size: 0.75rem;
   font-style: italic;
   line-height: 1.5em;
   }
