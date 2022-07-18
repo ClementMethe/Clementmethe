@@ -79,17 +79,14 @@ model-viewer {
   }
     
 .Hotspot {
-  pading: 2% 14px;
   background: rgba(0,0,0,0);
-  backdrop-filter: blur(2px);
   border:none;
-  backdrop-filter: blur(50px);
-  border-radius: 0px;
   }
 
 .Hotspot:hover {                
   display: flex;
-  background-color: rgba(255,255,255,0.6); 
+  background-color: rgba(255,255,255,0.6);
+  border-radius: 30px;
   }
 
 .Hotspotcontainer {
