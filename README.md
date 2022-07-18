@@ -1,5 +1,7 @@
-# Controlled Responsive font-size
+# Responsive website with a 3D model viewport made using various bits of code find on codepen.
 
 A Pen created on CodePen.io. Original URL: [https://codepen.io/clmth/pen/rNdyaXV](https://codepen.io/clmth/pen/rNdyaXV).
 
-Setting the type in vw then constraining it with min and max values set with Sass functions.
+@clementmethe
+
+2022
