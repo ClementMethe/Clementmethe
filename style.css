@@ -111,8 +111,8 @@ model-viewer {
   margin-right: auto;
   margin-left: auto;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(60px);
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
   border-radius: 10px;
   width: 22rem;
   position: relative;
