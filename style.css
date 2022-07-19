@@ -107,10 +107,10 @@ model-viewer {
 }
 
 .popup {
-  margin-top: 20rem;
+  margin-top: 10rem;
   margin-right: auto;
   margin-left: auto;
-  padding: 20px;
+  padding: .5rem;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
   border-radius: 10px;
