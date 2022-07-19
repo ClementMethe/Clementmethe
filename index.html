@@ -2,19 +2,21 @@
 <!-- Clément Méthé 2022>
 <html lang="en" >
 <head>
-    <meta charset="utf-8">
-    <title>Clément Méthé</title>
+  <!doctype html>
+    <meta charset="utf-8"
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+ <body>
  <body style="background-color:rgba(255,255,255,1);">
  <div class="container">
     <div class="h1">Clément Méthé
    <p class="text">But here is an artist. He desires to paint you the dreamiest, shadiest, quietest, most enchanting bit of romantic landscape in all the valley of the Saco. What is the chief element he employs? There stand his trees, each with a hollow trunk, as if a hermit and a crucifix were within; and here sleeps his meadow, and there sleep his cattle; and up from yonder cottage goes a sleepy smoke. Deep into distant woodlands winds a mazy way, reaching to overlapping spurs of mountains bathed in their hill-side blue.</p></div>
   
-   <div class="model-viewer"> <model-viewer src="/3DSCANCHROME.glb" environment-image="neutral" exposure="2" camera-controls autorotate camera-orbit="12deg 85deg 3.5m" min-camera-orbit="auto 45deg 2.5m"  min-field-of-view="30deg" max-camera-orbit="auto 135deg 4.5m"  auto-rotate>
+   <div class="model-viewer"> <model-viewer src="https://raw.githubusercontent.com/clementmethe/portfolio /main/3DSCANCHROME.glb" environment-image="neutral" exposure="3" camera-controls autorotate camera-orbit="12deg 85deg 3.5m" min-camera-orbit="auto 45deg 2.5m"  min-field-of-view="30deg" max-camera-orbit="auto 135deg 4.5m"  auto-rotate>
       
            <button class="Hotspot" slot="hotspot-3" data-position="0.32m 1.25m 1.75m" data-normal="0.9114737411800138m -0.05828998030104375m 0.40720743772162754m" data-visibility-attribute="visible"  onclick=" window.open('https://codepen.io','_top')">
                 <div class="HotspotAnnotation">Synologie</div></button>
@@ -22,9 +24,9 @@
               <button class="Hotspot" slot="hotspot-4" data-position="0.3m 1.00m 1.75m" data-normal="0.9114737411800138m -0.05828998030104375m 0.40720743772162754m" data-visibility-attribute="visible"><a class="Hotspot" href="#popup1">Contact</a></button>
 
            
-           <div id="popup1" class="overlay">
+           <div id="popup1" class="overlay draggable container">
 	<div class="popup">
-		<h2 class="HotspotAnnotation" >Clément Méthé</h2>
+		<h2 class="HotspotAnnotation">Clément Méthé</h2>
 		<a class="close" href="#">&times;</a>
 		<div class="content">
 			<a class="Hotspot" href="mailto:clement.methe@gmail.com" >clement.methe@gmail.com</a>
@@ -37,5 +39,6 @@
      
    </div>
 </div>
-</body>
-</html>
+   <script src="script.js"></script> 
+   </body>
+   </html>
