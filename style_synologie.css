@@ -66,9 +66,10 @@ body {
 .inter {
   font-family: "sligoilmicro";
   font-size: 0.8rem;
+  line-height: 1.4;
   position: relative;
   margin-bottom: 1.5rem;
-  margin-left: 2.3rem;
+  margin-left: 1.8rem;
   color: rgba(0, 0, 0, 0.7);
 }
 
