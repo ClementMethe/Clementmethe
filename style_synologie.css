@@ -94,6 +94,16 @@ img {
   margin-top: 2rem;
 }
 
+button{
+  border: none;
+  background-color: rgba(0,0,0,0);
+}
+
+button:hover{
+  border: none;
+  color: rgba(255,255,255,0.9);
+}
+
 .grid {
   display: grid;
   /*  set up 6 equal grid area for the layout  */
