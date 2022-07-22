@@ -79,6 +79,13 @@ ul {
   margin-top: 0rem;
 }
 
+.back {
+  font-family: 'sligoilmicro';
+  font-size: 2.9rem;
+  line-height: 1;
+  position:relative;
+  }
+
 img {
   height: auto;
   width: 100%;
