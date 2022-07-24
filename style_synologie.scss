@@ -1,0 +1,526 @@
+@font-face {
+    font-family: 'sligoilmicro';
+    src: url('https://raw.githubusercontent.com/clmth/3dfiles/main/Sligoil-Micro.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Calculations
+// Unitless for flexibility
+
+// Define base viewport for calculations
+$base-viewport: 1100;
+
+// Define base font size (at base viewport)
+$font-size-at-base-viewport: 17;
+
+// Define minimum computed font size in pixels
+$min-font-size: 16;
+
+// Define maximum computed font size in pixels
+$max-font-size: 16;
+
+@function base-font-size() {
+	@return ($font-size-at-base-viewport / $base-viewport) * 100;
+}
+
+@function breakpoint-for-fontsize($n) {
+    @return ($n / base-font-size()) * 100;
+}
+
+html {
+	font-size: base-font-size() * 1vw;
+}
+
+body {
+    background-color:rgba(255,90,40,1);
+    margin: 1% 1%;
+    margin-right: 3%;
+    text-align: left;
+    text-rendering: optimizeLegibility;
+}
+
+.container {
+  position: relative;
+  }
+
+.h1 {
+  font-family: 'sligoilmicro';
+  font-size: 4rem;
+  font-style: none;
+  display: inline-block;
+  margin: 0rem 0rem;
+  line-height: 1;
+  position:relative;
+  }
+
+.h2 {
+  font-family: 'sligoilmicro';
+  font-size: 2.4rem;
+  word-spacing: -.4rem;
+  color: rgba(0, 0, 0, 1);
+  display: inline-block;
+  line-height: 1.2;
+  margin: 0rem 0.3rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,1);
+  }
+
+.explications {
+  font-family: 'sligoilmicro';
+  font-size: 1.05rem;
+  color: rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  top: .7rem;
+  line-height: 1.2;
+  position:relative;
+  margin: 0rem 0.3rem;
+  margin-bottom: 0.4rem;
+  }
+
+.text {
+  font-family: 'sligoilmicro';
+  font-size: 0.8rem;
+  line-height: 1.4;
+  position: relative;
+  margin-left: 0.3rem;
+  color: rgba(0,0,0,0.8);
+  }
+
+.index{
+  font-family: 'sligoilmicro';
+  font-size:1.24rem;
+  color: rgba(0, 0, 0, 1);
+  text-decoration-color: rgba(0,0,0,1);
+  text-align: center;
+  display: block;  
+}
+
+a { 
+  color: inherit;
+} 
+
+.inter {
+  font-family: 'sligoilmicro';
+  font-size: 0.8rem;
+  line-height: 1.4;
+  position: relative;
+  margin-bottom: 3.5rem;
+  margin-top: 4rem;
+  padding-left: calc(1% + .1rem);
+  color: rgba(0,0,0,0.7);
+  border-left: 0.2rem solid rgba(0, 0, 0, .5);
+}
+
+.back {
+  font-family: 'sligoilmicro';
+  font-size: 2.95rem;
+  line-height: 1;
+  position:relative;
+  }
+
+ul{
+  margin-bottom: .6rem;
+  margin-top: 4rem;
+  margin-left: 0rem;
+}
+
+img{
+  height: 100%;
+  width:100%;
+  border-radius:5px;
+  object-fit: cover;
+}
+
+video{
+  margin-bottom: 0rem;
+}
+
+.pagelinks{
+  display:flex;
+  justify-content: center;
+}
+
+model-viewer {
+  z-index: 1; 
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  top: 0rem; 
+  width: 25rem; 
+  height: 25rem; 
+  }
+
+#intro{
+  color:black;
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+  color: rgba(0,0,0,0.8);
+}
+
+
+li{
+  margin-left: .7rem;
+}
+
+li::marker {
+  list-style: square;
+  list-style: inside;
+  display: inline;
+  white-space: nowrap;
+  position:absolute;
+}
+
+button{
+  border: none;
+  background-color: rgba(0,0,0,0);
+}
+
+button:hover{
+  border: none;
+  color: rgba(255,255,255,0.9);
+}
+
+.grid{
+  display:grid;
+/*  set up 6 equal grid area for the layout  */
+  grid-template-columns:repeat(6, 1fr);
+  grid-template-rows:auto;
+/*  The grid items within the grid layout will be auto-flow and fill up all the white space with content  */
+  grid-auto-flow:dense;
+/*  Set up the gutter   */
+  grid-gap:.6rem;
+}
+/* Combined Flexbox and CSS Grid */
+
+.header{
+  grid-column:1/-1;
+  /*  flexbox  */
+  display: flex;
+  /*  The second flex item will float under the logo when it resize into smaller layout  */
+  flex-flow:row wrap;
+  align-items: baseline;
+  position: relative;
+}
+
+
+
+.hero{
+  /* use all 6 grid areas */
+  grid-column:1/-1;
+  border-radius:5px;
+}
+
+.main{
+  /* use all 6 grid areas */
+  grid-column:1/-1;
+  /*  sub grid  */
+  display:grid;
+  /*  the image of this sub grid will auto fill up the white space  */
+  /*  with minmax setting, the images within this grid layout will stay structured   */
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  grid-template-rows:auto;
+  /*  gutter  */
+  grid-gap:.6rem;
+}
+
+.multiple{
+  /* use all 6 grid areas */
+  grid-column:1/-1;
+  /*  sub grid  */
+  display:grid;
+  /*  the image of this sub grid will auto fill up the white space  */
+  /*  with minmax setting, the images within this grid layout will stay structured   */
+  grid-template-columns:repeat(auto-fill, minmax(180px,1fr));
+  grid-template-rows:auto;
+  /*  gutter  */
+  grid-gap:.6rem;
+  padding-left: 0rem;
+}
+
+.main li:nth-child(4){
+  /* use all 6 grid areas */
+  grid-column:1/-1;
+}
+
+.sub{
+  grid-column:1/-1;
+}
+
+.sub ul{
+  /*  sub grid  */
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  grid-template-rows:auto;
+  grid-auto-flow:dense;
+  grid-gap:5px;
+}
+
+.sub ul li:nth-child(4){
+  /* use all 6 grid areas */
+  grid-column:1/-1;
+}
+
+.main, .sub ul{
+  list-style:none;
+  padding:0;
+}
+
+@media(min-width:800px){
+  .main{
+/*   smaller layout setting    */
+/*   a three grid area's layout   */
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:auto;
+/*   still auto-flow and fill up all the white spaces   */
+  grid-auto-flow:dense;
+/*   gutter   */
+  grid-gap:.6rem;
+  }
+  .last-img{
+/*   span the last image   */
+    grid-column:1/-1;
+  }
+  .multiple{
+/*   smaller layout setting    */
+/*   a three grid area's layout   */
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows:auto;
+/*   still auto-flow and fill up all the white spaces   */
+  grid-auto-flow:dense;
+/*   gutter   */
+  grid-gap:.6rem;
+  }
+
+}
+
+@media(min-width:680px){
+/*  the grid grid becomes a two grid areas's layout  */
+  .sub ul{
+  grid-template-columns:1fr 1fr;
+  }
+  }
+  .sub ul li:nth-child(4){
+/*   span the image   */
+  grid-column:1/-1;
+}
+
+
+
+
+
+// Minimum font size
+@media screen and (max-width: breakpoint-for-fontsize($min-font-size) * 1px) {
+	html {
+		font-size: $min-font-size * 1px;
+	}
+}
+
+// Maximum font size
+@media screen and (min-width: breakpoint-for-fontsize($max-font-size) * 1px) {
+	html {
+		font-size: $max-font-size * 1.33px;
+	}
+}
+
+@import "compass/css3";
+
+*, *:before, *:after {
+	-webkit-border-sizing: border-box;
+	-moz-border-sizing: border-box;
+	border-sizing: border-box;
+}
+
+@mixin ul-nostyle {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.dropdown {
+  position: relative;
+  
+	& > .dropdown-menu {
+		max-height: 0;
+		overflow: hidden;
+		@include ul-nostyle;
+		@include transform(scaleY(0));
+		@include transform-origin(50%, 0%);
+		@include transition(max-height 0s ease-out);
+		@include animation(hideAnimation 0s ease-out);
+	}
+  
+  & > input[type="checkbox"] {
+    opacity: 0;
+    display: flex;
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    
+    &:checked ~ .dropdown-menu {
+      max-height: 9999px;
+			display: block;
+			@include transform(scaleY(1));
+			@include animation(showAnimation 0s ease-out);
+			@include transition(max-height 0s ease-out);
+    }
+  }  
+}
+
+#BINC{
+  margin-bottom: 5rem;
+}
+
+@include keyframes(showAnimation) {
+	0% {
+		@include transform(scaleY(0));
+	}
+	100% {
+		@include transform(scaleY(1));
+	}
+}
+@include keyframes(hideAnimation) {
+  0% {
+  	@include transform(scaleY(1));
+  }
+ 
+  100% {
+  	@include transform(scaleY(0));
+  }
+}
+
+.dropdown:hover {
+  color: white;
+}
+
+
+
+
+
+
+// Modal
+.modaloverlay{
+  background: rgba(255,255,255,0.4);
+  bottom:0;
+  left:0;
+  opacity:0;
+  pointer-events:none;
+  position:fixed;
+  right:0;
+  top:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  z-index:-1;
+  display: none;
+  &:target{
+    display: block;
+    opacity:1;
+    pointer-events:auto;
+    z-index:99999;
+  }
+  .modal{
+	  background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(60px);   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15rem;
+    height:1rem;
+    border-radius: 15px;
+    padding:3rem;
+	> iframe, > div{
+		border:none;
+    }
+    
+  }
+  .close{
+    color:black;
+    font-size:2rem;
+    padding: 0rem 1rem;
+    position:absolute;
+    right:0;
+    text-align:center;
+    text-decoration:none;
+    top:0;
+    z-index: 1;
+  }
+}
+
+
+
+
+
+
+#myImg {
+	border-radius: 8px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+#myImga:hover {
+	opacity: 0.7s;
+}
+
+/* The modal background */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px; /*location of the box */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto; /* enable scroll if needed */
+	background-color: rgb(0,0,0); /* fallback color*/
+	background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+}
+
+
+/* Add animation-zoom in the image (bigger image) */
+.modal-content, #caption {
+	-webkit-animation-name: zoom;
+	-webkit-animation-duration: 0.6s;
+	animation-name: zoom;
+	animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+	from {transform:scale(0)}
+	to {transform:scale(1)}
+}
+
+@keyframes zoom {
+	from {transform:scale(0)}
+	to {transform:scale(1)}
+}
+
+.close {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
