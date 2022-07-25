@@ -9,6 +9,7 @@ html {
 }
 
 body {
+  color:rgba(255,90,40,1);
   text-align: left;
   text-rendering: optimizeLegibility;
 }
