@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  margin: 0 0rem;
+  margin: 1% 1%;
   text-align: left;
   text-rendering: optimizeLegibility;
 }
@@ -23,7 +23,6 @@ body {
   font-size: 4rem;
   font-style: none;
   display: inline-block;
-  margin: 1% 1%;
   line-height: 1;
   position: relative;
 }
