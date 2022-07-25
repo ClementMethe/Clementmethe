@@ -4,8 +4,31 @@
   font-weight: normal;
   font-style: normal;
 }
+// Calculations
+// Unitless for flexibility
+
+// Define base viewport for calculations
+$base-viewport: 1100;
+
+// Define base font size (at base viewport)
+$font-size-at-base-viewport: 15;
+
+// Define minimum computed font size in pixels
+$min-font-size: 13;
+
+// Define maximum computed font size in pixels
+$max-font-size: 17;
+
+@function base-font-size() {
+	@return ($font-size-at-base-viewport / $base-viewport) * 100;
+}
+
+@function breakpoint-for-fontsize($n) {
+    @return ($n / base-font-size()) * 100;
+}
+
 html {
-  font-size: 1.54545vw;
+	font-size: base-font-size() * 1vw;
 }
 
 body {
