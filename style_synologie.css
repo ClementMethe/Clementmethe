@@ -32,11 +32,24 @@ html {
 }
 
 body {
+  overflow: overlay;
   background-color: #ff5a28;
   margin: 1% 1%;
   margin-right: 1%;
   text-align: left;
   text-rendering: optimizeLegibility;
+}
+
+::-webkit-scrollbar {
+  width: .5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(70, 70, 70, 0.7);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
 }
 
 .container {
