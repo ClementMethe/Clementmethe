@@ -99,12 +99,14 @@ model-viewer {
 }
 
 .Hotspotcontact {
-  position: relative;
-  right: 1.7rem;
   font-family: "sligoilmicro";
-  background-color: rgba(0, 0, 0, 0);
-  color: black;
   font-size: 1.3rem;
+  color: black;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .Hotspotcontact:hover {
@@ -129,18 +131,14 @@ model-viewer {
 }
 
 .modaloverlay {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(5px);
+  position: fixed;
   bottom: 0;
   left: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: fixed;
   right: 0;
   top: 0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
-  transition: opacity 400ms ease-in;
+  pointer-events: none;
   z-index: -1;
   display: none;
 }
@@ -151,30 +149,30 @@ model-viewer {
   z-index: 99999;
 }
 .modaloverlay .modal {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(5px);
-  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 15rem;
-  height: 1rem;
+  width: 22rem;
+  height: 6rem;
   border-radius: 15px;
-  padding: 3rem;
 }
 .modaloverlay .modal > iframe, .modaloverlay .modal > div {
   border: none;
 }
+
 .modaloverlay .close {
   color: black;
   font-size: 2rem;
-  padding: 0rem 1rem;
-  position: absolute;
-  right: 0;
-  text-align: center;
+  margin-left: 20rem;
   text-decoration: none;
-  top: 0;
   z-index: 1;
+}
+
+.modaloverlay .close:hover {
+  color: rgb(255, 255, 255);
 }
 
 section {
