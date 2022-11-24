@@ -1,6 +1,6 @@
 @font-face {
   font-family: "sligoilmicro";
-  src: url("Sligoil-Micro.woff") format("woff");
+  src: url("sligoil-micro-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -31,7 +31,7 @@ body {
 }
 
 .h1 {
-  font-family: "sligoilmicro";
+  font-family: 'Pinyon Script', cursive;
   font-size: 4rem;
   font-style: none;
   color: #f8f8f8;
@@ -131,7 +131,7 @@ model-viewer {
 }
 
 .modaloverlay {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0);
   backdrop-filter: blur(5px);
   position: fixed;
   bottom: 0;
@@ -156,7 +156,8 @@ model-viewer {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 22rem;
-  height: 6rem;
+  height: 5rem;
+  line-height: 2rem;
   border-radius: 15px;
 }
 .modaloverlay .modal > iframe, .modaloverlay .modal > div {
@@ -189,30 +190,4 @@ section {
   html {
     font-size: 16.2px;
   }
-}
-
-
-@font-face {
-  font-family: 'sligoilmicro';
-  src: url('https://raw.githubusercontent.com/clmth/3dfiles/main/Sligoil-Micro.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
-
-
-
-
-
-
-
-
-
-
-
-
-.last{
-color: rgb(255, 255, 255);
-line-height: 10px;
 }
