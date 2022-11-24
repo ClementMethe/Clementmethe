@@ -33,6 +33,6 @@ console.log(array[0]);
 for(var value of array){
   var rdmSelect = document.getElementById(value)
   console.log(rdmSelect)
-  rdmSelect.style.fontFamily = "Pinyon Script Regular";
+  rdmSelect.style.fontFamily = 'Pinyon Script';
   rdmSelect.style.fontSize = "30px";
 }
