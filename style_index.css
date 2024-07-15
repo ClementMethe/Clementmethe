@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+
 @font-face {
   font-family: "sligoilmicro";
   src: url("sligoil-micro-webfont.woff") format("woff");
@@ -11,8 +14,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
 
 html {
   font-size: 1.3636363636;
