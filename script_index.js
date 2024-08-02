@@ -37,8 +37,3 @@ for(var value of array){
   rdmSelect.style.fontSize = "30px";
 }
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LD285153SB');
