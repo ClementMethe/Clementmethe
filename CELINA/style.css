@@ -16,37 +16,34 @@ body {
 #header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Aligne les éléments à gauche et à droite */
+    justify-content: space-between;
     border-bottom: solid 1px black;
     height: 4rem;
-    padding: 0 15px; /* Ajoute un peu de padding pour que les éléments ne touchent pas les bords */
+    padding: 0 15px;
 }
 
 #header .title {
-    flex: 1; /* Permet à .title de prendre tout l'espace disponible à gauche */
+    flex: 1;
 }
 
 #header .title h1 {
-    font-family: "milkman", sans-serif;
+    font-family: "Milkman", sans-serif;
     font-weight: bold;
     font-size: 30px;
-    margin: 0; /* Supprime les marges par défaut du <h1> */
+    margin: 0;
 }
 
-#header .about {
-    /* Ajout de flex: 1 pour que .about soit aligné à droite */
-}
 
 #header .about a {
-    font-family: "milkman", sans-serif;
-    font-size: 30px; /* Ajustez si nécessaire */
+    font-family: "Milkman", sans-serif;
+    font-size: 30px; 
     font-weight: bold;
-    color: black; /* Couleur du texte */
-    text-decoration: none; /* Enlève le soulignement par défaut */
+    color: black;
+    text-decoration: none;
 }
 
 #header .about a:hover {
-    text-decoration: underline; /* Souligne le texte au survol */
+    text-decoration: underline;
     cursor: zoom-in;
 }
 
@@ -66,16 +63,15 @@ body {
     z-index: 1;
     position: relative;
     display: flex;
-    align-items: flex-end; /* Aligner le contenu en bas */
-    overflow: hidden; /* Maintient le défilement horizontal */
-    white-space: nowrap; /* Reste en ligne */
+    align-items: flex-end;
+    overflow: hidden;
+    white-space: nowrap;
     user-select: none;  
-    /* Hauteur de la div "ligne", ajustée pour accueillir des images plus grandes */
 }
 
 .ligne + .ligne {
     z-index: 0;
-    margin-top: -10px; /* Ajustez cette valeur pour rapprocher la deuxième .ligne de la première */
+    margin-top: -10px;
 }
 
 .ligne + .ligne:hover {
@@ -85,30 +81,189 @@ body {
 .projet {
     font-family: "Instrument Serif", serif;
     font-style: italic;
-    font-size: 100px;
-    line-height: 70px;
-    margin: 10px;
+    font-size: 5vw;
+    line-height: 7vw;
     cursor: pointer;
-    padding: 10px;
     border: 1px solid transparent;
     border-radius: 10px;
-    vertical-align: bottom; /* Aligner le texte en bas */
+    vertical-align: bottom;
+    transition: 0.2s;
 }
 
 .projet:hover {
-    text-decoration: underline; /* Souligne le texte au survol */
     cursor: cell;
+    color: rgb(0, 255, 0);
 }
 
 .photo-projet {
     position: relative;
-    margin: 10px;
-    height: 100%; /* Assurez-vous que les conteneurs d'images remplissent la hauteur de la div "ligne" */
+    height: 100%;
+    margin-left: 1vw;
+    margin-right: 1.5vw;
 }
 
 .photo-projet img {
     position: relative;
-    bottom: 0;
-    height: 130px; /* Hauteur de l'image, ajustée pour être plus grande que la div "ligne" */
+    bottom: 1vw;
+    height: 10vw;
     pointer-events: none;
+}
+
+
+
+
+
+/*::::::::::projet::::::::::::*/
+
+
+
+
+
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px black;
+    height: 4rem;
+    padding: 0 15px;
+  }
+  
+  #header .title {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    position: relative;
+  }
+  
+  #header .title img#exit-icon {
+    margin-right: 15px;
+    height: 40px;
+  }
+  
+  #header .title .title-text {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  #header .title .title-text a {
+    font-family: "Milkman", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 0;
+    text-decoration: none;
+    color: black;
+    display: none;
+    cursor: zoom-in;
+  }
+  
+  #header .title .title-text img#fleche-icon {
+    width: 60px;
+    margin-top: 5px;
+  }
+  
+  #header .title .title-text:hover a {
+    display: block;
+  }
+  
+  #header .title .title-text:hover img#fleche-icon {
+    display: none;
+  }
+  
+  #header .about a {
+    font-family: "Milkman", sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+  }
+  
+  #header .about a:hover {
+    text-decoration: underline;
+    cursor: zoom-in;
+  }
+
+  .gallery {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 15px;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .gallery-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+  }
+  
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    align-self: flex-start;
+    width: 400px;
+    white-space: pre;
+    margin-right: 15px;
+  }
+  
+  h1 {
+    font-family: "Milkman", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 0;
+  }
+  
+  p {
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: normal;
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .gallery-container img {
+    width: 500px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+
+
+
+
+
+/*::::::::::reactive::::::::::::*/
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+    .projet {
+        font-size: 10vw;
+        line-height: 12vw;
+    }
+
+    .photo-projet img {
+        height: 20vw;
+    }
+
+    #header .title h1, #header .about a {
+        font-size: 18px;
+    }
+
+    .gallery-container img {
+        width: 300px;
+      }
 }

@@ -93,3 +93,87 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+
+///////////projets///////////
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const gallery = document.querySelector('.gallery');
+
+    gallery.addEventListener('wheel', function(event) {
+      if (event.deltaY !== 0) {
+        // Scrolle horizontalement en fonction du scroll vertical
+        gallery.scrollLeft += event.deltaY;
+        event.preventDefault(); // Empêche le défilement vertical de la page
+      }
+    });
+  });
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const galleryContainer = document.querySelector('.gallery-container');
+    const images = Array.from(galleryContainer.children);
+    const repetitions = 5; // Nombre de répétitions souhaité
+
+    // Cloner les images pour créer le nombre de répétitions souhaité
+    const totalImages = images.length;
+    for (let i = 0; i < repetitions; i++) {
+        images.forEach(img => galleryContainer.appendChild(img.cloneNode(true)));
+    }
+
+    // Calculer la largeur totale après avoir ajouté les clones
+    const totalWidth = galleryContainer.scrollWidth;
+    const containerWidth = galleryContainer.clientWidth;
+
+    let scrollAmount = 0;
+    const speed = 1; // Ajustez la vitesse si nécessaire
+    let isScrolling = true;
+    let animationFrameId;
+
+    const startScroll = () => {
+        if (isScrolling) {
+            scrollAmount += speed;
+            if (scrollAmount >= totalWidth / 2) {
+                scrollAmount = 0; // Réinitialiser pour créer l'effet d'infini
+            }
+            galleryContainer.scrollLeft = scrollAmount;
+            animationFrameId = requestAnimationFrame(startScroll);
+        }
+    };
+
+    startScroll();
+
+    // Gestion du défilement manuel
+    document.querySelector('.gallery').addEventListener('wheel', function(event) {
+        galleryContainer.scrollLeft += event.deltaY;
+        event.preventDefault(); // Empêche le défilement vertical de la page
+    });
+
+    // Arrêter l'animation lorsqu'on passe la souris sur la galerie
+    document.querySelector('.gallery').addEventListener('mouseenter', () => {
+        isScrolling = false;
+        cancelAnimationFrame(animationFrameId);
+    });
+
+    // Reprendre l'animation lorsque la souris quitte la galerie
+    document.querySelector('.gallery').addEventListener('mouseleave', () => {
+        isScrolling = true;
+        startScroll();
+    });
+
+    // Gestion du redimensionnement de la fenêtre
+    window.addEventListener('resize', () => {
+        // Recalculer la largeur totale en cas de redimensionnement
+        galleryContainer.style.width = `${galleryContainer.scrollWidth}px`;
+    });
+});
+
+
+
+  
+
+
