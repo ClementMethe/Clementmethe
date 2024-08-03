@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ligne.scrollLeft = 0;
 
         let scrollAmount = 0;
-        const speed = 2;
+        const speed = 5;
         let isScrolling = false;
         let isDragging = false;
         let startX;
