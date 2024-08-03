@@ -33,17 +33,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const startDrag = (e) => {
             isDragging = true;
-            wasDragging = false; // Réinitialiser le flag pour les vérifications ultérieures
+            wasDragging = false;
             startX = e.pageX - ligne.getBoundingClientRect().left;
             scrollLeft = ligne.scrollLeft;
             ligne.style.cursor = 'grabbing';
-            isScrolling = false; // Stop automatic scrolling
+            isScrolling = false;
             cancelAnimationFrame(animationFrameId);
         };
 
         const drag = (e) => {
             if (isDragging) {
-                wasDragging = true; // Marquer comme étant en train de faire glisser
+                wasDragging = true;
                 const x = e.pageX - ligne.getBoundingClientRect().left;
                 const walk = (x - startX) * 0.5;
                 ligne.scrollLeft = scrollLeft - walk;
@@ -56,9 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ligne.style.cursor = 'grab';
                 scrollAmount = ligne.scrollLeft;
                 isScrolling = true;
-                startScroll(); 
-                
-                // Empêcher le clic si un drag a été effectué
+                startScroll();
                 if (wasDragging) {
                     e.preventDefault();
                 }
@@ -81,10 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('mousemove', drag);
         document.addEventListener('mouseup', endDrag);
 
-        // Gestion des clics pour ouvrir les liens dans les projets
         ligne.addEventListener('click', (e) => {
             const projet = e.target.closest('.projet');
-            if (projet && !wasDragging) { // Ouvrir le lien uniquement si ce n'était pas un drag
+            if (projet && !wasDragging) {
                 const link = projet.getAttribute('data-link');
                 if (link) {
                     window.location.href = link;
@@ -94,51 +91,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
-///////////projets///////////
-
-
-
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const gallery = document.querySelector('.gallery');
 
     gallery.addEventListener('wheel', function(event) {
       if (event.deltaY !== 0) {
-        // Scrolle horizontalement en fonction du scroll vertical
         gallery.scrollLeft += event.deltaY;
-        event.preventDefault(); // Empêche le défilement vertical de la page
+        event.preventDefault();
       }
     });
-  });
+});
 
-
-
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const galleryContainer = document.querySelector('.gallery-container');
     const images = Array.from(galleryContainer.children);
-    const repetitions = 5; // Nombre de répétitions souhaité
+    const repetitions = 5;
 
-    // Cloner les images pour créer le nombre de répétitions souhaité
-    const totalImages = images.length;
     for (let i = 0; i < repetitions; i++) {
         images.forEach(img => galleryContainer.appendChild(img.cloneNode(true)));
     }
 
-    // Calculer la largeur totale après avoir ajouté les clones
-    const totalWidth = galleryContainer.scrollWidth;
-    const containerWidth = galleryContainer.clientWidth;
-
     let scrollAmount = 0;
-    const speed = 1; // Ajustez la vitesse si nécessaire
+    const speed = 1;
     let isScrolling = true;
     let animationFrameId;
 
     const startScroll = () => {
         if (isScrolling) {
             scrollAmount += speed;
-            if (scrollAmount >= totalWidth / 2) {
-                scrollAmount = 0; // Réinitialiser pour créer l'effet d'infini
+            if (scrollAmount >= galleryContainer.scrollWidth / 2) {
+                scrollAmount = 0;
             }
             galleryContainer.scrollLeft = scrollAmount;
             animationFrameId = requestAnimationFrame(startScroll);
@@ -147,37 +129,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
     startScroll();
 
-    // Gestion du défilement manuel
     document.querySelector('.gallery').addEventListener('wheel', function(event) {
         galleryContainer.scrollLeft += event.deltaY;
-        event.preventDefault(); // Empêche le défilement vertical de la page
+        event.preventDefault();
     });
 
-    // Arrêter l'animation lorsqu'on passe la souris sur la galerie
     document.querySelector('.gallery').addEventListener('mouseenter', () => {
         isScrolling = false;
         cancelAnimationFrame(animationFrameId);
     });
 
-    // Reprendre l'animation lorsque la souris quitte la galerie
     document.querySelector('.gallery').addEventListener('mouseleave', () => {
         isScrolling = true;
         startScroll();
     });
 
-    // Gestion du redimensionnement de la fenêtre
     window.addEventListener('resize', () => {
-        // Recalculer la largeur totale en cas de redimensionnement
-        galleryContainer.style.width = `${galleryContainer.scrollWidth}px`;
+        scrollAmount = galleryContainer.scrollLeft;
+        if (isScrolling) {
+            cancelAnimationFrame(animationFrameId);
+            startScroll();
+        }
     });
 });
 
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
     const translatableElements = document.querySelectorAll('.translatable');
   
     translatableElements.forEach(element => {
-      // Sauvegarde du texte original avec HTML
       const originalHTML = element.innerHTML;
   
       element.addEventListener('mouseover', () => {
@@ -189,10 +168,4 @@ document.addEventListener('DOMContentLoaded', () => {
         element.innerHTML = originalHTML;
       });
     });
-  });
-  
-  
-
-  
-
-
+});
