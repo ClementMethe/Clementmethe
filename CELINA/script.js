@@ -172,7 +172,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const translatableElements = document.querySelectorAll('.translatable');
+  
+    translatableElements.forEach(element => {
+      // Sauvegarde du texte original avec HTML
+      const originalHTML = element.innerHTML;
+  
+      element.addEventListener('mouseover', () => {
+        const translationHTML = element.getAttribute('data-translation');
+        element.innerHTML = translationHTML;
+      });
+  
+      element.addEventListener('mouseout', () => {
+        element.innerHTML = originalHTML;
+      });
+    });
+  });
+  
+  
 
   
 
