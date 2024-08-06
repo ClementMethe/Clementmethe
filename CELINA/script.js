@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ligne.scrollLeft = 0;
 
         let scrollAmount = 0;
-        const speed = 5;
+        const speed = 4;
         let isScrolling = false;
         let isDragging = false;
         let startX;
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let wasDragging = false;
 
         const startScroll = () => {
-            if (isScrolling) {
+            if (isScrolling && window.innerWidth > 480) { 
                 scrollAmount += speed;
                 if (scrollAmount > ligne.scrollWidth - ligne.clientWidth) {
                     scrollAmount = 0;
@@ -56,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 ligne.style.cursor = 'grab';
                 scrollAmount = ligne.scrollLeft;
                 isScrolling = true;
-                startScroll();
+                if (window.innerWidth > 480) { 
+                    startScroll();
+                }
                 if (wasDragging) {
                     e.preventDefault();
                 }
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         ligne.addEventListener('mouseenter', () => {
-            if (!isDragging) {
+            if (!isDragging && window.innerWidth > 480) { 
                 isScrolling = true;
                 startScroll();
             }
@@ -95,10 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const gallery = document.querySelector('.gallery');
 
     gallery.addEventListener('wheel', function(event) {
-      if (event.deltaY !== 0) {
-        gallery.scrollLeft += event.deltaY;
-        event.preventDefault();
-      }
+        if (event.deltaY !== 0) {
+            gallery.scrollLeft += event.deltaY;
+            event.preventDefault();
+        }
     });
 });
 
@@ -113,8 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let scrollAmount = 0;
     const speed = 1;
-    let isScrolling = true;
-    let animationFrameId;
+    let isScrolling = window.innerWidth > 480; 
 
     const startScroll = () => {
         if (isScrolling) {
@@ -127,7 +128,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    startScroll();
+    if (isScrolling) {
+        startScroll();
+    }
 
     document.querySelector('.gallery').addEventListener('wheel', function(event) {
         galleryContainer.scrollLeft += event.deltaY;
@@ -140,12 +143,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.querySelector('.gallery').addEventListener('mouseleave', () => {
-        isScrolling = true;
-        startScroll();
+        isScrolling = window.innerWidth > 480; 
+        if (isScrolling) {
+            startScroll();
+        }
     });
 
     window.addEventListener('resize', () => {
         scrollAmount = galleryContainer.scrollLeft;
+        isScrolling = window.innerWidth > 480; 
         if (isScrolling) {
             cancelAnimationFrame(animationFrameId);
             startScroll();
@@ -155,17 +161,90 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const translatableElements = document.querySelectorAll('.translatable');
-  
+
     translatableElements.forEach(element => {
-      const originalHTML = element.innerHTML;
-  
-      element.addEventListener('mouseover', () => {
-        const translationHTML = element.getAttribute('data-translation');
-        element.innerHTML = translationHTML;
-      });
-  
-      element.addEventListener('mouseout', () => {
-        element.innerHTML = originalHTML;
-      });
+        const originalHTML = element.innerHTML;
+
+        element.addEventListener('mouseover', () => {
+            const translationHTML = element.getAttribute('data-translation');
+            element.innerHTML = translationHTML;
+        });
+
+        element.addEventListener('mouseout', () => {
+            element.innerHTML = originalHTML;
+        });
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    function adjustQualificationsHeight() {
+        const translatableElement = document.querySelector('.translatable');
+        const rect = translatableElement.getBoundingClientRect();
+        const elementHeight = rect.height;
+        const qualificationsElement = document.querySelector('.qualifications');
+        qualificationsElement.style.height = `${elementHeight}px`;
+    }
+
+    function handleResize() {
+        if (window.innerWidth > 480) {
+            adjustQualificationsHeight();
+        } else {
+            qualificationsElement.style.height = 'auto';
+        }
+    }
+
+    window.addEventListener('load', handleResize);
+    window.addEventListener('resize', handleResize);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const splitter = document.querySelector('.splitter');
+    const leftPanel = document.querySelector('.about-text');
+    const rightPanel = document.querySelector('.additional-content');
+    const qualificationsElement = document.querySelector('.qualifications');
+    const translatableElement = document.querySelector('.translatable');
+
+    let startX, startWidthLeft;
+
+    function adjustQualificationsHeight() {
+        const translatableHeight = translatableElement.offsetHeight;
+        qualificationsElement.style.height = `${translatableHeight}px`;
+    }
+
+    function handleResize() {
+        if (window.innerWidth > 480) {
+            adjustQualificationsHeight();
+        } else {
+            qualificationsElement.style.height = 'auto';
+        }
+    }
+
+    splitter.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        startWidthLeft = leftPanel.offsetWidth;
+
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+    });
+
+    function onMouseMove(e) {
+        const dx = e.clientX - startX;
+        const newWidthLeft = Math.max(300, startWidthLeft + dx);
+
+        leftPanel.style.width = `${newWidthLeft}px`;
+        rightPanel.style.flexBasis = `calc(100% - ${newWidthLeft + splitter.offsetWidth}px)`;
+
+        if (window.innerWidth > 480) {
+            adjustQualificationsHeight();
+        }
+    }
+
+    function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+    }
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
 });
