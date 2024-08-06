@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Milkman";
+    src: url(fonts/milkman.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Instrument Serif";
+    src: url(fonts/InstrumentSerif-Italic.ttf) format("truetype");
+}
+
 /* général */
 html, body {
   width: 100%;
