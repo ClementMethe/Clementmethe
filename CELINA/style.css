@@ -9,6 +9,17 @@ html, body {
   flex-direction: column;
 }
 
+@font-face {
+  font-family: "Milkman";
+  src: url("fonts/milkman.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("fonts/InstrumentSerif-Italic.ttf") format("truetype");
+}
+
+
 h1 {
   font-family: "Milkman", sans-serif;
   font-size: 30px;
